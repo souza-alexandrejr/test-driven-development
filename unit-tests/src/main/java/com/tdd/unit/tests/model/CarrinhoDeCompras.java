@@ -7,30 +7,30 @@ public class CarrinhoDeCompras {
 	
 	public CarrinhoDeCompras() {
 		super();
-		this._produtos = new ArrayList<Produto>();
+		this._itens = new ArrayList<Item>();
 	}
 	
-	public void adiciona(Produto produto) {
-		this._produtos.add(produto);
+	public void adiciona(Item item) {
+		this._itens.add(item);
 	}
 	
-	public List<Produto> getProdutos() {
-		return _produtos;
+	public List<Item> getItens() {
+		return _itens;
 	}
 
 	public double getTotal() {
 		return _total;
 	}
 
-	public void setItens(List<Produto> produtos) {
-		this._produtos = produtos;
+	public void setItens(List<Item> itens) {
+		this._itens = itens;
 	}
 
 	public void setTotal(double total) {
 		this._total = total;
 	}
 
-	private List<Produto> _produtos;
+	private List<Item> _itens;
 	
 	private double _total;
 

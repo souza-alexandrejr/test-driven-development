@@ -1,32 +1,32 @@
 package com.tdd.unit.tests.utils;
 
 import com.tdd.unit.tests.model.CarrinhoDeCompras;
-import com.tdd.unit.tests.model.Produto;
+import com.tdd.unit.tests.model.Item;
 
 public class MaiorEMenor {
 	
 	public void encontra(CarrinhoDeCompras carrinhoDeCompras) {
-		for (Produto produto : carrinhoDeCompras.getProdutos()) {
-			if (_menor == null || produto.getValor() < _menor.getValor()) {
-				_menor = produto;
+		for (Item item : carrinhoDeCompras.getItens()) {
+			if (_menor == null || item.getValorTotal() < _menor.getValorTotal()) {
+				_menor = item;
 			}
 			
-			if (_maior == null || produto.getValor() > _maior.getValor()) {
-				_maior = produto;
+			if (_maior == null || item.getValorTotal() > _maior.getValorTotal()) {
+				_maior = item;
 			}
 		}
 	}
 	
-	public Produto getMaior() {
+	public Item getMaior() {
 		return _maior;
 	}
 	
-	public Produto getMenor() {
+	public Item getMenor() {
 		return _menor;
 	}
 	
-	private Produto _maior;
+	private Item _maior;
 	
-	private Produto _menor;
+	private Item _menor;
 
 }

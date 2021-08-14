@@ -1,10 +1,12 @@
 package com.tdd.unit.tests.utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
 import com.tdd.unit.tests.model.CarrinhoDeCompras;
+import com.tdd.unit.tests.model.Item;
 import com.tdd.unit.tests.model.Produto;
 
 public class MaiorEMenorTest {
@@ -14,20 +16,34 @@ public class MaiorEMenorTest {
 	 * 	- Produtos com valores em ordem crescente
 	 * 	- Produtos com valores em ordem variada
 	 * 	- Um unico produto no carrinho
+	 *  - Um carrinho sem nenhum item
 	 */
 	
 	@Test
-	public void apenasUmProduto() {
+	public void apenasUmItem() {
 		Produto produto = new Produto("Geladeira", 450.0);
 		
+		Item item = new Item(produto, 1);
+		
 		CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
-		carrinhoDeCompras.adiciona(produto);
+		carrinhoDeCompras.adiciona(item);
 
 		MaiorEMenor algoritmo = new MaiorEMenor();
 		algoritmo.encontra(carrinhoDeCompras);
 		
-		assertEquals(produto, algoritmo.getMenor());
-		assertEquals(produto, algoritmo.getMaior());
+		assertEquals(item, algoritmo.getMenor());
+		assertEquals(item, algoritmo.getMaior());
+	}
+	
+	@Test
+	public void carrinhoVazio() {
+		CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+
+		MaiorEMenor algoritmo = new MaiorEMenor();
+		algoritmo.encontra(carrinhoDeCompras);
+		
+		assertNull(algoritmo.getMenor());
+		assertNull(algoritmo.getMaior());
 	}
 	
 	@Test
@@ -36,16 +52,20 @@ public class MaiorEMenorTest {
 		Produto produto2 = new Produto("Liquificador", 250.0);
 		Produto produto3 = new Produto("Jogo de Pratos", 70.0);
 		
+		Item item1 = new Item(produto1, 2);
+		Item item2 = new Item(produto2, 1);
+		Item item3 = new Item(produto3, 3);
+		
 		CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
-		carrinhoDeCompras.adiciona(produto1);
-		carrinhoDeCompras.adiciona(produto2);
-		carrinhoDeCompras.adiciona(produto3);
+		carrinhoDeCompras.adiciona(item1);
+		carrinhoDeCompras.adiciona(item2);
+		carrinhoDeCompras.adiciona(item3);
 		
 		MaiorEMenor algoritmo =  new MaiorEMenor();
 		algoritmo.encontra(carrinhoDeCompras);
 		
-		assertEquals(produto3, algoritmo.getMenor());
-		assertEquals(produto1, algoritmo.getMaior());
+		assertEquals(item3, algoritmo.getMenor());
+		assertEquals(item1, algoritmo.getMaior());
 	}
 	
 	@Test
@@ -54,16 +74,20 @@ public class MaiorEMenorTest {
 		Produto produto2 = new Produto("Geladeira", 450.0);
 		Produto produto3 = new Produto("Jogo de Pratos", 70.0);
 		
+		Item item1 = new Item(produto1, 2);
+		Item item2 = new Item(produto2, 1);
+		Item item3 = new Item(produto3, 3);
+		
 		CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
-		carrinhoDeCompras.adiciona(produto1);
-		carrinhoDeCompras.adiciona(produto2);
-		carrinhoDeCompras.adiciona(produto3);
+		carrinhoDeCompras.adiciona(item1);
+		carrinhoDeCompras.adiciona(item2);
+		carrinhoDeCompras.adiciona(item3);
 		
 		MaiorEMenor algoritmo =  new MaiorEMenor();
 		algoritmo.encontra(carrinhoDeCompras);
 		
-		assertEquals(produto3, algoritmo.getMenor());
-		assertEquals(produto2, algoritmo.getMaior());
+		assertEquals(item3, algoritmo.getMenor());
+		assertEquals(item1, algoritmo.getMaior());
 	}
 
 }
