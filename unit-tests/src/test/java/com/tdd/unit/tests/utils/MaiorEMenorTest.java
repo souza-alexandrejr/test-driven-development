@@ -1,11 +1,16 @@
 package com.tdd.unit.tests.utils;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
 import com.tdd.unit.tests.model.CarrinhoDeCompras;
 import com.tdd.unit.tests.model.Produto;
 
 public class MaiorEMenorTest {
 	
-	public static void main(String[] args) {
+	@Test
+	public void ordemDescrescente() {
 		
 		// Definicao do Cenario
 		
@@ -23,8 +28,8 @@ public class MaiorEMenorTest {
 		
 		// Validacao dos resultados
 		
-		System.out.println("O menor produto: " + algoritmo.getMenor().getNome());
-		System.out.println("O maior produto: " + algoritmo.getMaior().getNome());
+		assertEquals("Jogo de Pratos", algoritmo.getMenor().getNome());
+		assertEquals("Geladeira", algoritmo.getMaior().getNome());
 	}
 
 }
